@@ -147,13 +147,7 @@ class CLIP(nn.Module):
                 = self.Bi_cross_attention(image_seq_embeddings, text_seq_embeddings) 
             image_loss = self.bt2i(image_seq_embeddings, text_to_local_image_embed, self.predictor)
             text_loss = self.bi2t(text_seq_embeddings, image_to_local_text_embed)
-            ret['bai_loss'] =  (image_loss + text_loss) * self.config.experiment.bai_ratio
-
-        if self.config.experiment.ent:
-            _angle = L.oxy_angle(text_features, image_features, self.curv.exp())
-            _aperture = L.half_aperture(text_features, self.curv.exp())
-            entailment_loss = torch.clamp(_angle - _aperture, min=0).mean()
-            ret['ent_loss'] = entailment_loss * self.config.experiment.ent_ratio   
+            ret['bai_loss'] =  (image_loss + text_loss) * self.config.experiment.bai_ratio 
             
         return ret
     

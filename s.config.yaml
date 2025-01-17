@@ -36,9 +36,6 @@ experiment:
   bai_ratio: 0.03
   ###
   lamda: 0.20
-  ###
-  ent: true
-  ent_ratio: 0.1
 
 schedule:
   lr: 0.8e-4 
@@ -53,8 +50,8 @@ schedule:
 
 model:
   ckpt_type: original_clip  # original_clip / saved
-  saved_path: 'ckpts/s.baseline_224_224/RSTPReid'
-  checkpoint: '/data/qch/TBPS/ViT-B-16.pt'    # e.g., '../../data/CLIP/ViT-B-16.pt'
+  saved_path: '.../RSTPReid'
+  checkpoint: '.../ViT-B-16.pt'    # e.g., '../../data/CLIP/ViT-B-16.pt'
   use_gather: true
   softlabel_ratio: 0.4
   embed_dim: 512
@@ -72,5 +69,5 @@ distributed:
   backend: nccl
   url: 'env://'
 
-anno_dir: '/data/qch/TBPS/annotation/RSTPReid'    # e.g., 'data/CUHK-PEDES'
-image_dir: '/data/qch/dataset/RSTPReid/imgs'     # e.g., '../../datasets/cuhkpedes/imgs'
+anno_dir: '.../RSTPReid'    
+image_dir: '.../RSTPReid/imgs'    
